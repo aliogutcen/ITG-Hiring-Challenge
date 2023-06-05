@@ -1,5 +1,7 @@
 package com.ogutcenali.exception;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -20,24 +22,28 @@ import static com.ogutcenali.exception.EErrorType.INTERNAL_ERROR;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseBody
-    public ResponseEntity<ErrorMessage> handleIllegalArgumentException(IllegalArgumentException exception){
+    public ResponseEntity<ErrorMessage> handleIllegalArgumentException(IllegalArgumentException exception) {
         EErrorType EErrorType = INTERNAL_ERROR;
-        return new ResponseEntity<>(createError(EErrorType,exception), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(createError(EErrorType, exception), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(AuthException.class)
     @ResponseBody
-    public ResponseEntity<ErrorMessage> handleSpringMonoException(AuthException exception){
-        return new ResponseEntity<>(createError(exception.getErrorType(),exception),exception.getErrorType().getHttpStatus());
+    public ResponseEntity<ErrorMessage> handleSpringMonoException(AuthException exception) {
+        return new ResponseEntity<>(createError(exception.getErrorType(), exception), exception.getErrorType().getHttpStatus());
     }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public final ResponseEntity<ErrorMessage> handleMessageNotReadableException(
             HttpMessageNotReadableException exception) {
         EErrorType EErrorType = BAD_REQUEST_ERROR;
         return new ResponseEntity<>(createError(EErrorType, exception), EErrorType.getHttpStatus());
     }
+
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public final ResponseEntity<ErrorMessage> handleMethodArgumentMisMatchException(
             MethodArgumentTypeMismatchException exception) {
@@ -66,7 +72,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorMessage, EErrorType.getHttpStatus());
     }
 
-    private ErrorMessage createError(EErrorType EErrorType, Exception exception){
+    private ErrorMessage createError(EErrorType EErrorType, Exception exception) {
         return ErrorMessage.builder()
                 .code(EErrorType.getCode())
                 .message(EErrorType.getMessage())

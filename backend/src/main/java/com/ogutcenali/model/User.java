@@ -17,7 +17,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "tbl_user")
-public class User implements UserDetails  {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,8 @@ public class User implements UserDetails  {
 
     private boolean enabled;
 
+    private boolean isAccountNonLocked;
+
     @Enumerated(EnumType.STRING)
     private Roles role;
 
@@ -40,6 +42,7 @@ public class User implements UserDetails  {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
+
     @Override
     public String getPassword() {
         return password;
@@ -57,7 +60,7 @@ public class User implements UserDetails  {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return this.isAccountNonLocked;
     }
 
     @Override
@@ -69,7 +72,12 @@ public class User implements UserDetails  {
     public boolean isEnabled() {
         return this.enabled;
     }
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public void setIsAccountNonLocked(boolean isAccountNonLocked) {
+        this.isAccountNonLocked = isAccountNonLocked;
     }
 }

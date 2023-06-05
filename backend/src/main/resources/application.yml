@@ -1,5 +1,13 @@
 server:
   port: 8080
+#logging:
+#  level:
+#    com.ogutcenali: WARN
+#  file:
+#    name: project.log
+#  logback:
+#    rollingpolicy:
+#      max-file-size: 20MB
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -26,3 +34,7 @@ spring:
             enable: true
 jwt:
   secretKey: ${PASSWORD}
+
+redis:
+  host: "localhost"
+  port: 6379
