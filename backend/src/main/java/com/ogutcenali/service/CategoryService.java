@@ -12,7 +12,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,32 +26,59 @@ public class CategoryService {
     }
 
     @Transactional
-    @CacheEvict(value = "category",allEntries = true)
-    public Object createCategory(CreateCategoryRequest createCategoryRequest) {
-        Optional<Category> category = categoryRepository.findByCategoryName(createCategoryRequest.getCategoryName());
-        if (category.isPresent()) throw new AuthException(EErrorType.CATEGORY_HAS_BEEN);
-        categoryRepository.save(ICategoryMapper.INSTANCE.toCategory(createCategoryRequest));
+    @CacheEvict(value = "category", allEntries = true)
+    public boolean createCategory(CreateCategoryRequest createCategoryRequest) {
+        String categoryName = createCategoryRequest.getCategoryName();
+        assertCategoryDoesNotExist(categoryName);
+        Category category = mapRequestToCategory(createCategoryRequest);
+        saveCategory(category);
         return true;
+    }
+
+    private void assertCategoryDoesNotExist(String categoryName) {
+        Optional<Category> existingCategory = categoryRepository.findByCategoryName(categoryName);
+        if (existingCategory.isPresent()) {
+            throw new AuthException(EErrorType.CATEGORY_HAS_BEEN);
+        }
+    }
+
+    private Category mapRequestToCategory(CreateCategoryRequest createCategoryRequest) {
+        return ICategoryMapper.INSTANCE.toCategory(createCategoryRequest);
+    }
+
+    private Category saveCategory(Category category) {
+        return categoryRepository.save(category);
     }
 
     @Cacheable(value = "category")
     public List<CategoryResponse> getAllCategory() {
-        return categoryRepository.findAll().stream()
-                .map(x -> CategoryResponse.builder()
-                        .categoryName(x.getCategoryName())
-                        .categoryId(x.getId())
-                        .build())
-                .collect(Collectors.toList());
+        List<Category> categories = fetchAllCategories();
+        return convertToCategoryResponse(categories);
     }
+
+    private List<Category> fetchAllCategories() {
+        return categoryRepository.findAll();
+    }
+
+    private List<CategoryResponse> convertToCategoryResponse(List<Category> categories) {
+        return categories.stream().map(ICategoryMapper.INSTANCE::toCategoryResponse).collect(Collectors.toList());
+    }
+
     @Transactional
-    @CacheEvict(value = "category",allEntries = true)
-    public Boolean deleteCategory(Long categoryId) {
-        Optional<Category> category = categoryRepository.findById(categoryId);
-        if (category.isEmpty()) throw new AuthException(EErrorType.CATEGORY_NOT_FOUND);
-        categoryRepository.delete(category.get());
+    @CacheEvict(value = "category", allEntries = true)
+    public boolean deleteCategory(Long categoryId) {
+        Category category = findCategoryById(categoryId);
+        deleteCategory(category);
         return true;
     }
 
+    private Category findCategoryById(Long categoryId) {
+        return categoryRepository.findById(categoryId).orElseThrow(() -> new AuthException(EErrorType.CATEGORY_NOT_FOUND));
+    }
+
+    private void deleteCategory(Category category) {
+        categoryRepository.delete(category);
+    }
     public Optional<Category> getCategoryFromCategoryId(Long categoryId) {
         return categoryRepository.findById(categoryId);
     }

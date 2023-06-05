@@ -19,7 +19,6 @@ public class ProductController {
 
     private final ProductService productService;
     @PostMapping()
-    @ResponseStatus ( HttpStatus . CREATED )
     public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest createProductRequest){
         return ResponseEntity.ok(productService.createProduct(createProductRequest));
     }
@@ -32,7 +31,6 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProduct(id));
     }
     @PutMapping("/{id}/stock-update")
-    @ResponseStatus ( HttpStatus. OK )
     public ResponseEntity<ProductResponse> updateStockProduct(@PathVariable Long id,@RequestBody UpdateStockRequest updateStockRequest){
         return ResponseEntity.ok(productService.updateStock(id,updateStockRequest));
     }
