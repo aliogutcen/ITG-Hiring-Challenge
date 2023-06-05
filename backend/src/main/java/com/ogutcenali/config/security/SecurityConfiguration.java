@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                  .cors().and()
                  .authorizeHttpRequests()
                  .antMatchers("/api/v1/auth/**","/api/v1/categories/**","/api/v1/products/**","/swagger-ui/**",
-                         "/v3/api-docs/**")
+                         "/v3/api-docs/**","/api/v1/cards","/api/v1/cards/users/**")
                  .permitAll()
                  .anyRequest()
                  .authenticated()

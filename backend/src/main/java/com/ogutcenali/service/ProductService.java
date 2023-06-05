@@ -26,6 +26,7 @@ public class ProductService {
         this.categoryService = categoryService;
     }
 
+    //Added ımage cdn
     @Transactional
     @CacheEvict(value = "products", allEntries = true)
     public Object createProduct(CreateProductRequest createProductRequest) {
