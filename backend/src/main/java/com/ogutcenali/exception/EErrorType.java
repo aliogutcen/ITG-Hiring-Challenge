@@ -22,9 +22,9 @@ public enum EErrorType {
     AUTH_LOGIN_ERROR(4002,"KULLANICI ADI YA DA ŞİFRE HATALIDIR." ,INTERNAL_SERVER_ERROR ),
     ACCOUNT_NOT_ACTIVE(4003,"Your account is not active",BAD_REQUEST ),
     ACCOUNT_LOCKED(4005,"Your account is locked",BAD_REQUEST ),
-
+    CATEGORY_HAS_BEEN(4015,"Category is been",BAD_REQUEST),
+    CATEGORY_NOT_FOUND(4015,"Category not found",BAD_REQUEST),
     USER_NOT_FOUND
-
     ;
 
     private int code;

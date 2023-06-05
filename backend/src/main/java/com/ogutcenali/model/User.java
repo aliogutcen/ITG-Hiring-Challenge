@@ -77,7 +77,7 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    public void setAccountLocked(boolean isAccountNonLocked) {
+    public void setIsAccountNonLocked(boolean isAccountNonLocked) {
         this.isAccountNonLocked = isAccountNonLocked;
     }
 }

@@ -9,6 +9,7 @@ import com.ogutcenali.exception.EErrorType;
 import com.ogutcenali.mapper.IAuthenticationMapper;
 import com.ogutcenali.model.User;
 import com.ogutcenali.repository.UserRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -60,7 +61,7 @@ public class AuthenticationService {
         User user = IAuthenticationMapper.INSTANCE.toUserRegister(registerRequest);
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         user.setEnabled(false);
-        user.setAccountLocked(false);
+        user.setIsAccountNonLocked(true);
         return user;
     }
 
@@ -69,6 +70,7 @@ public class AuthenticationService {
         failedAttemptService.createFailedAttemptForUser(user.getId(), user.getEmail());
         verificationUserService.save(user);
     }
+
 
     public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
         User user = findUserByEmail(authenticationRequest.getEmail());
@@ -82,8 +84,6 @@ public class AuthenticationService {
     private User findUserByEmail(String email) {
         Optional<User> userOptional = userRepository.findByEmail(email);
         if (!userOptional.isPresent()) throw new AuthException(EErrorType.USER_NOT_FOUND);
-
-
         User user = userOptional.get();
         if (!user.isEnabled()) throw new AuthException(EErrorType.ACCOUNT_NOT_ACTIVE);
         return user;
@@ -112,7 +112,7 @@ public class AuthenticationService {
     public void customerLocked(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new AuthException(EErrorType.USER_NOT_FOUND));
-        user.setAccountLocked(true);
+        user.setIsAccountNonLocked(false);
         userRepository.save(user);
     }
 }

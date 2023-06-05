@@ -73,7 +73,6 @@ public class GlobalExceptionHandler {
     }
 
     private ErrorMessage createError(EErrorType EErrorType, Exception exception) {
-        logger.error("hata", exception.getMessage());
         return ErrorMessage.builder()
                 .code(EErrorType.getCode())
                 .message(EErrorType.getMessage())
