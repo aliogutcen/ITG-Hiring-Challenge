@@ -1,10 +1,9 @@
 package com.ogutcenali.model;
 
+import com.ogutcenali.model.enums.ETrackingStatus;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 @Data
 @Builder
@@ -12,15 +11,15 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "tbl_orders")
-public class Order {
+@Table(name = "tbl_shipping")
+public class Shipping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer userId;
-    private Double amount;
-    @OneToMany(mappedBy = "order")
-    List<Product> products;
 
+    @Enumerated(EnumType.STRING)
+    private ETrackingStatus trackingStatus;
+    @OneToOne
+    private Order order;
 }
