@@ -3,7 +3,6 @@ package com.ogutcenali.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Builder
@@ -30,4 +29,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    private Integer quantity;
+    @ManyToOne
+    private Order order;
 }
