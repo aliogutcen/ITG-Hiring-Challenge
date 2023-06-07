@@ -1,0 +1,42 @@
+.footer {
+  padding: 50px 0px;
+  background: #fde4e4;
+
+  .footer__logo {
+    h4 {
+      font-weight: bold;
+    }
+    p {
+      font-size: 0.9rem;
+      color: #333;
+      line-height: 29px;
+    }
+  }
+
+  .shipping {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .shipping__time-list {
+    background-color: transparent !important;
+    display: flex;
+    flex-direction: column;
+
+    .shipping__time-item {
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      span {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #212245;
+      }
+    }
+    .footer__title {
+      font-size: 1.1rem;
+      color: #212245;
+      font-weight: 600;
+    }
+  }
+}
