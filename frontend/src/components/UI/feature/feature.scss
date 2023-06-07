@@ -1,0 +1,22 @@
+.feature {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+  h6 {
+    font-weight: 600;
+  }
+  p {
+    color: #777;
+    font-size: 14px;
+  }
+}
+
+.feature__img {
+  width: 260px;
+  text-align: start;
+}
+.dene {
+  gap: 50px;
+}
