@@ -69,3 +69,47 @@
     color: #df2020;
   }
 }
+
+.product__category {
+  background-color: #df2020;
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px 0px;
+  border-radius: 8px;
+  button {
+    border: none;
+    outline: none;
+    padding: 7px 20px;
+    background-color: transparent;
+    color: #fff;
+    gap: 6px;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .product-btn-active {
+    background-color: #fff !important;
+    border-radius: 5px;
+    color: #df2020;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__content {
+    padding-top: 5px;
+    p {
+      font-size: 1rem;
+      line-height: 30px;
+      color: #777;
+    }
+  }
+}

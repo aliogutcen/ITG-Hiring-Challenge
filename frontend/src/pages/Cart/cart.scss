@@ -1,0 +1,35 @@
+th {
+  text-align: center;
+}
+.cart__img-box {
+  width: 80px;
+  img {
+    width: 100%;
+  }
+}
+
+.cart__item-del {
+  i {
+    cursor: pointer;
+  }
+}
+
+.add__to_cart {
+  a {
+    color: white;
+  }
+}
+
+.cart__page-btn {
+  display: flex;
+  gap: 20px;
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.cart__subtotal {
+  color: #df2020;
+  font-size: 1.5rem;
+}

@@ -1,10 +1,15 @@
 import "./home.scss";
+import { useState, useEffect } from "react";
 import Helmet from "../../components/Helmet/Helmet";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import carHero from "../../assets/car.svg";
 import { Link } from "react-router-dom";
 import Category from "../../components/UI/category/Category";
 import Feature from "../../components/UI/feature/Feature";
+import ProductCard from "../../components/UI/product-card/ProductCard";
+import category1 from "../../assets/hamburger.png";
+import products from "../../assets/fake-data/products";
+import whyImg from "../../assets/location.png";
 const Home = () => {
   return (
     <Helmet title="Home">
@@ -40,7 +45,7 @@ const Home = () => {
           </Row>
         </Container>
       </section>
-      <section className="pt-6">
+      <section className="pt-6 category-section">
         <Category />
       </section>
 
@@ -61,6 +66,75 @@ const Home = () => {
       </section>
       <section className="pt-0 section__futured">
         <Feature />
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="text-center">
+              <h2>Populer Products</h2>
+            </Col>
+            {products.map((item) => (
+              <Col lg="3" md="4" key={item.id} className="mt-5">
+                <ProductCard item={item} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section className="why__choose-us">
+        <Container className="d-flex align-content-center">
+          <Row>
+            <Col lg="6" md="6">
+              <img src={whyImg} alt="why-tasty-treat" className="w-100" />
+            </Col>
+
+            <Col lg="6" md="6">
+              <div>
+                <h2 className="tasty__treat-title mb-4">
+                  Why <span>Logo Us?</span>
+                </h2>
+                <p className="tasty__treat-desc">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolorum, minus. Tempora reprehenderit a corporis velit,
+                  laboriosam vitae ullam, repellat illo sequi odio esse iste
+                  fugiat dolor, optio incidunt eligendi deleniti!
+                </p>
+
+                <ListGroup className="mt-4">
+                  <ListGroupItem className="border-0 ps-0">
+                    <p className=" choose__us-title d-flex align-items-center gap-2 ">
+                      <i class="ri-checkbox-circle-line"></i>Quality product
+                    </p>
+                    <p className="choose__us-desc">
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Quia, voluptatibus.
+                    </p>
+                  </ListGroupItem>
+
+                  <ListGroupItem className="border-0 ps-0">
+                    <p className="choose__us-title d-flex align-items-center gap-2 ">
+                      <i class="ri-checkbox-circle-line"></i> Quality support
+                    </p>
+                    <p className="choose__us-desc">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Qui, earum.
+                    </p>
+                  </ListGroupItem>
+                  <ListGroupItem className="border-0 ps-0">
+                    <p className="choose__us-title d-flex align-items-center gap-2 ">
+                      <i class="ri-checkbox-circle-line"></i> Quality shipping
+                    </p>
+                    <p className="choose__us-desc">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Qui, earum.
+                    </p>
+                  </ListGroupItem>
+                </ListGroup>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </section>
     </Helmet>
   );
