@@ -4,6 +4,12 @@ import { NavLink, Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 const nav__links = [
   {
     display: "Home",
@@ -24,6 +30,8 @@ const Header = () => {
   const headerRef = useRef(null);
   const [isMenuActive, setMenuActive] = useState(false);
   const dispatch = useDispatch();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
   const toggleMenu = () => {
     menuRef.current.classList.toggle("show__menu");
   };
@@ -49,6 +57,15 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
   return (
     <header className="header" ref={headerRef}>
@@ -80,9 +97,27 @@ const Header = () => {
               </span>
             )}
             <span className="user">
-              <Link to="/login">
-                <i class="ri-user-line"></i>
-              </Link>
+              {token ? (
+                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                  <DropdownToggle
+                    tag="span"
+                    data-toggle="dropdown"
+                    aria-expanded={dropdownOpen}
+                  >
+                    <i class="ri-user-line"></i>
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>
+                      <Link to="/profile">Profile</Link>
+                    </DropdownItem>
+                    <DropdownItem onClick={logout}>Logout</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              ) : (
+                <Link to="/login">
+                  <i class="ri-user-line"></i>
+                </Link>
+              )}
             </span>
             <span className="mobile__menu" onClick={toggleMenu}>
               <i class="ri-menu-line"></i>
@@ -92,6 +127,11 @@ const Header = () => {
       </Container>
     </header>
   );
+};
+
+const logout = () => {
+  localStorage.removeItem("token");
+  window.location.replace("/");
 };
 
 export default Header;

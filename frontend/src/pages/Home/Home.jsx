@@ -3,20 +3,30 @@ import { useState, useEffect } from "react";
 import Helmet from "../../components/Helmet/Helmet";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import carHero from "../../assets/car.svg";
+import carMechanic from "../../assets/car-banner.png";
 import { Link } from "react-router-dom";
 import Category from "../../components/UI/category/Category";
-import Feature from "../../components/UI/feature/Feature";
 import ProductCard from "../../components/UI/product-card/ProductCard";
-import category1 from "../../assets/hamburger.png";
-import products from "../../assets/fake-data/products";
+import Feature from "../../components/UI/feature/Feature";
 import whyImg from "../../assets/location.png";
+import ProductService from "../../service/ProductService";
 const Home = () => {
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    ProductService.products().then((response) => {
+      console.log(response);
+      setProduct([...response.data]);
+    });
+    return () => {};
+  }, []);
+
   return (
     <Helmet title="Home">
       <section className="home">
         <Container>
           <Row className="mt-2">
-            <Col lg="6" md="6">
+            <Col lg="6" md="6" sm="12">
               <div className="hero__content">
                 <h5 className="mb-3">Easy way to make an order</h5>
                 <h1 className="mb-4 hero__title">
@@ -39,16 +49,12 @@ const Home = () => {
             </Col>
             <Col lg="6" md="6">
               <div className="hero__img">
-                <img src={carHero} alt="hero-img" className="hero__image" />
+                <img src={carMechanic} alt="hero-img" className="hero__image" />
               </div>
             </Col>
           </Row>
         </Container>
       </section>
-      <section className="pt-6 category-section">
-        <Category />
-      </section>
-
       <section className="pt-4">
         <Container>
           <Row>
@@ -71,9 +77,9 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center">
-              <h2>Populer Products</h2>
+              <h2 className="populer-product">Populer Products</h2>
             </Col>
-            {products.map((item) => (
+            {product.map((item) => (
               <Col lg="3" md="4" key={item.id} className="mt-5">
                 <ProductCard item={item} />
               </Col>

@@ -4,9 +4,9 @@
   line-height: 80px;
 }
 .logo h2 {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #212245;
+  font-size: 2.3rem;
+  font-weight: bolder;
+  color: #ff0a34;
 }
 
 .menu {
@@ -23,10 +23,10 @@
 }
 
 .menu a:hover {
-  color: #df2020;
+  color: #ff0a34;
 }
 .active__menu {
-  color: #df2020 !important;
+  color: #ff0a34 !important;
 }
 
 .cart_icon i,
@@ -46,7 +46,7 @@
   position: absolute;
   top: 20px;
   right: -10px;
-  background: #df2020;
+  background: #ff0a34;
   color: #fff;
   width: 15px;
   height: 15px;
