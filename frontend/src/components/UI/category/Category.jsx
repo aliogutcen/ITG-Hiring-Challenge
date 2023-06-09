@@ -1,36 +1,25 @@
 import "./category.scss";
 import { Container, Row, Col } from "reactstrap";
-import carTyre from "../../../assets/tyre.png";
-const categoryData = [
-  {
-    display: "Tyre",
-    img: carTyre,
-  },
-  {
-    display: "Oil",
-    img: carTyre,
-  },
-  {
-    display: "Engine",
-    img: carTyre,
-  },
-  {
-    display: "Engine",
-    img: carTyre,
-  },
-];
-
+import CategoryService from "../../../service/CategoryService";
+import { useState, useEffect } from "react";
 const Category = () => {
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    CategoryService.categories().then((response) => {
+      setCategory([...response.data]);
+    });
+    return () => {};
+  }, []);
+
   return (
     <Container>
       <Row>
-        {categoryData.map((item, index) => (
-          <Col lg="3" md="3">
+        {category.map((category, index) => (
+          <Col lg="3" md="3" key={index}>
             <div className="category__item">
-              <div className="category__img">
-                <img src={item.img} alt="" className="category__img" />
-              </div>
-              <h6>{item.display}</h6>
+              <div className="category__img"></div>
+              <h6>{category.categoryName}</h6>
             </div>
           </Col>
         ))}

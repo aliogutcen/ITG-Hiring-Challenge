@@ -1,19 +1,28 @@
 import "./products.scss";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Helmet from "../../components/Helmet/Helmet";
 import CommonSection from "../../components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
-import products from "../../assets/fake-data/products";
 import ProductCard from "../../components/UI/product-card/ProductCard";
 import ReactPaginate from "react-paginate";
-
+import ProductService from "../../service/ProductService";
 const Products = () => {
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    ProductService.products().then((response) => {
+      console.log(response);
+      setProduct([...response.data]);
+    });
+    return () => {};
+  }, []);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
-  const searchProduct = products.filter((item) => {
+  const searchProduct = product.filter((item) => {
     if (searchTerm === "") return item;
-    if (item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    if (item.productName.toLowerCase().includes(searchTerm.toLowerCase()))
       return item;
   });
   const productPerPage = 12;
@@ -23,7 +32,7 @@ const Products = () => {
     visitedPage + productPerPage
   );
 
-  const pageCount = Math.ceil(products.length / productPerPage);
+  const pageCount = Math.ceil(product.length / productPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
