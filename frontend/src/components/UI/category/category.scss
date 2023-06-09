@@ -22,3 +22,18 @@
 .category__item:hover {
   transform: translateY(-15px);
 }
+@media only screen and (max-width: 992px) {
+  .category__item {
+    display: none;
+
+    .category__img {
+      width: 60px;
+      margin-left: 10px;
+    }
+
+    h6 {
+      font-weight: 600;
+      color: #333;
+    }
+  }
+}
