@@ -58,7 +58,7 @@ const ProductDetails = () => {
       <section className="product_details">
         <Container>
           <Row>
-            <Col lg="2" md="2">
+            <Col lg="2" md="2" sm="12" xs="12">
               <div className="product__images">
                 <div
                   className="img__item mb-3"
@@ -82,13 +82,13 @@ const ProductDetails = () => {
                 </div>
               </div>
             </Col>
-            <Col lg="4" md="4">
+            <Col lg="4" md="4" sm="12" xs="12">
               <div className="product__main-img">
                 <img src={productDetail.image01} alt="" className="w-100" />
               </div>
             </Col>
 
-            <Col lg="6" md="6">
+            <Col lg="6" md="6" sm="12" xs="12">
               <div className="single__product-content">
                 <div>
                   <h2 className="product__title mb-3">{productName}</h2>

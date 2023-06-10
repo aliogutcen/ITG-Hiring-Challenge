@@ -73,8 +73,8 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .logo h2 {
-    font-size: 1.6rem;
+  .logo {
+    font-size: 2.5rem;
     font-weight: bold;
     color: #212245;
   }
@@ -86,6 +86,7 @@
     height: 100%;
     background-color: rgba(33, 34, 69, 0.452);
     display: none;
+    z-index: 9999;
   }
 
   .menu {
@@ -125,7 +126,7 @@
     line-height: 60px;
   }
 
-  .logo h2 {
-    font-size: 1.2rem;
+  .logo {
+    font-size: 1.6rem;
   }
 }

@@ -26,7 +26,7 @@ const Home = () => {
       <section className="home">
         <Container>
           <Row className="mt-2">
-            <Col lg="6" md="6" sm="12">
+            <Col lg="6" md="6" sm="12" xs="12">
               <div className="hero__content">
                 <h5 className="mb-3">Easy way to make an order</h5>
                 <h1 className="mb-4 hero__title">
@@ -47,7 +47,7 @@ const Home = () => {
                 </div>
               </div>
             </Col>
-            <Col lg="6" md="6">
+            <Col lg="6" md="6" sm="12" xs="12" className="mt-2">
               <div className="hero__img">
                 <img src={carMechanic} alt="hero-img" className="hero__image" />
               </div>
@@ -58,7 +58,7 @@ const Home = () => {
       <section className="pt-4">
         <Container>
           <Row>
-            <Col lg="12" className="text-center">
+            <Col lg="12" md="12" sm="12" xs="12" className="text-center">
               <h5 className="mb-3">Easy way to make an order</h5>
               <h1 className="mb-4 hero__title">
                 <span>Needed?</span> Just wait a second
@@ -76,11 +76,11 @@ const Home = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="12" className="text-center">
+            <Col lg="12" md="12" sm="12" xs="12" className="text-center">
               <h2 className="populer-product">Populer Products</h2>
             </Col>
             {product.map((item) => (
-              <Col lg="3" md="4" key={item.id} className="mt-5">
+              <Col lg="4" md="6" sm="12" xs="12" key={item.id} className="mt-5">
                 <ProductCard item={item} />
               </Col>
             ))}

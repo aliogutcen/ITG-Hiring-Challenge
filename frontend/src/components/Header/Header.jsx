@@ -72,7 +72,7 @@ const Header = () => {
       <Container>
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
-            <h2>LOGO</h2>
+            <h2 className="logo">LOGO</h2>
           </div>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <div className="menu d-flex align-content-center gap-5 ">
@@ -120,7 +120,11 @@ const Header = () => {
               )}
             </span>
             <span className="mobile__menu" onClick={toggleMenu}>
-              <i class="ri-menu-line"></i>
+              {isMenuActive ? (
+                <i className="ri-close-line"></i> // Kapatma işareti olarak kullanılabilir SVG ikonu
+              ) : (
+                <i className="ri-menu-line"></i> // Açma işareti olarak kullanılabilir SVG ikonu
+              )}
             </span>
           </div>
         </div>

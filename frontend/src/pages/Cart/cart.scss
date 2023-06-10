@@ -33,3 +33,16 @@ th {
   color: #df2020;
   font-size: 1.5rem;
 }
+
+@media only screen and (max-width: 992px) {
+  .button_area {
+    .add__to_cart {
+      border: none;
+      background-color: #ff0a34;
+      color: #fde4e4;
+      padding: 4px 12px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+  }
+}

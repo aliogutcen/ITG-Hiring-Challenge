@@ -48,6 +48,15 @@
   cursor: pointer;
 }
 
+.add__to_cart {
+  border: none;
+  background-color: #ff0a34;
+  color: #fde4e4;
+  padding: 6px 20px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
 @media only screen and (max-width: 576px) {
   .product__images {
     display: flex;
@@ -55,12 +64,15 @@
   }
 
   .single__product-content {
-    padding-left: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 150px;
+    align-items: center;
   }
-  .add__to_cart {
-    margin-top: 100px;
+
+  .single__product-content {
+    padding: 0px;
+    margin-top: 10px;
   }
 }

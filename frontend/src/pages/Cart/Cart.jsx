@@ -15,7 +15,7 @@ const Cart = () => {
       <section className="cart-area">
         <Container>
           <Row>
-            <Col lg="12">
+            <Col lg="12" md="12" sm="12" xs="12">
               {cartItems.length === 0 ? (
                 <h5 className="text-center">Your cart is empty</h5>
               ) : (
@@ -31,15 +31,13 @@ const Cart = () => {
                   </thead>
                   <tbody>
                     {cartItems.map((item) => (
-                      <Tr item={item} key={item} />
+                      <Tr item={item} key={item.id} />
                     ))}
-
-                    <Tr />
                   </tbody>
                 </table>
               )}
 
-              <div className="mt-4">
+              <div className="mt-4 button_area">
                 <h6>
                   Subtotal: $
                   <span className="cart__subtotal">{totalAmount}</span>
