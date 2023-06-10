@@ -9,7 +9,6 @@ import com.ogutcenali.exception.EErrorType;
 import com.ogutcenali.mapper.IAuthenticationMapper;
 import com.ogutcenali.model.User;
 import com.ogutcenali.repository.UserRepository;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -78,6 +77,7 @@ public class AuthenticationService {
         String token = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(token)
+                .id(user.getId())
                 .build();
     }
 

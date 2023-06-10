@@ -1,9 +1,9 @@
 package com.ogutcenali.model;
 
+import com.ogutcenali.model.enums.ETrackingStatus;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Data
@@ -20,7 +20,13 @@ public class Order {
     private Long id;
     private Integer userId;
     private Double amount;
-    @OneToMany(mappedBy = "order")
-    List<Product> products;
+
+    private String address;
+
+    private String phone;
+
+    @Enumerated(EnumType.STRING)
+    private ETrackingStatus eTrackingStatus;
+
 
 }

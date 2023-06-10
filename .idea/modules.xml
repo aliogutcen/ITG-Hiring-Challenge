@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/E-Ticaret-Hiring.iml" filepath="$PROJECT_DIR$/.idea/E-Ticaret-Hiring.iml" />
+
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend.main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend.main.iml" />
+
     </modules>
   </component>
 </project>

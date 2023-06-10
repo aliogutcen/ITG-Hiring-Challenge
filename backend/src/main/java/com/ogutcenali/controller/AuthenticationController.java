@@ -6,12 +6,14 @@ import com.ogutcenali.dto.response.AuthenticationResponse;
 import com.ogutcenali.service.AuthenticationService;
 import com.ogutcenali.service.VerificationUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.net.URI;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -23,8 +25,9 @@ public class AuthenticationController {
     private final VerificationUserService verificationUserService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody @Valid RegisterRequest registerRequest) {
-        return ResponseEntity.ok(authenticationService.register(registerRequest));
+    public ResponseEntity<Void> register(@RequestBody @Valid RegisterRequest registerRequest) {
+        authenticationService.register(registerRequest);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("/authenticate")
