@@ -6,6 +6,7 @@ import com.ogutcenali.service.CreditCardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,16 +19,17 @@ public class CreditCardController {
 
     private final CreditCardService creditCardService;
     @PostMapping()
-    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<?>  addCard(@RequestBody CreateCreditCardRequest createCreditCardRequest){
         return ResponseEntity.ok(creditCardService.createCreditCard(createCreditCardRequest));
     }
     @GetMapping("/users/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<List<CreditCardResponse>> getAllCreditCardForUser(@PathVariable Integer id){
         return ResponseEntity.ok(creditCardService.getAllCreditCardsForUser(id));
     }
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<?> deleteCard(@PathVariable Long id){
         return ResponseEntity.ok(creditCardService.deleteCard(id));
     }

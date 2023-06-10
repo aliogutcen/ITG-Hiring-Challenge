@@ -21,7 +21,10 @@ public class Product {
 
     private Integer stock;
 
-    private String image;
+    private Double price;
+    private String image01;
+    private String image02;
+    private String image03;
 
     private String describe;
 
@@ -30,6 +33,5 @@ public class Product {
     private Category category;
 
     private Integer quantity;
-    @ManyToOne
-    private Order order;
+
 }
