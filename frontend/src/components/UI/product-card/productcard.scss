@@ -1,0 +1,105 @@
+.product__item {
+  border: 1px solid #b8b6b6;
+  text-align: center;
+  padding: 30px;
+  cursor: pointer;
+  height: 100%;
+  min-height: 19rem;
+  border-radius: 15px;
+}
+
+.product__img {
+  margin-bottom: 20px;
+
+  transition: 0.4s;
+}
+
+.product__img:hover {
+  transform: scale(1.1);
+}
+
+.product__content h5 a {
+  color: #212245;
+  font-style: 1.2rem;
+}
+
+.product__content h5 {
+  margin-bottom: 30px;
+}
+
+.product__price {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #ff0a34;
+}
+
+.add__to_cart_product {
+  border: none;
+  padding: 5px 20px;
+  background: #ff0a34;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+.product__content span {
+  font-weight: bold;
+}
+
+.choose__us-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.choose__us-title i {
+  font-weight: 500 !important;
+  color: #ff0a34;
+}
+
+.choose__us-desc {
+  color: #777;
+}
+
+.testimonial__subtitle {
+  color: #ff0a34;
+}
+
+.testimonial__title span {
+  color: #ff0a34;
+}
+
+.testimonial__desc {
+  color: #777;
+  line-height: 30px;
+}
+.tasty__treat-title span {
+  color: #ff0a34;
+}
+
+.tasty__treat-desc {
+  color: #777;
+  line-height: 28px;
+}
+
+@media only screen and (max-width: 992px) {
+  .product__content h5 a {
+    font-size: 0.8rem;
+  }
+  .product__item {
+    padding: 20px;
+  }
+  .addTOCart__btn {
+    padding: 5px 15px;
+    font-size: 0.7rem;
+  }
+
+  .product__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .product_card-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

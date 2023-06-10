@@ -1,0 +1,19 @@
+.feature {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+  h6 {
+    font-weight: bold;
+  }
+  p {
+    color: #777;
+    font-size: 16px;
+  }
+}
+
+.feature__img {
+  width: 300px;
+  text-align: start;
+}
