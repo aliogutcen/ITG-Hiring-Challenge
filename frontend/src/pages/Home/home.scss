@@ -17,7 +17,8 @@
 }
 
 .hero__image {
-  height: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .hero__btns {
@@ -55,9 +56,6 @@
     color: #ff0a34;
   }
 
-  .bot__security {
-    gap: 20px;
-  }
   .home__service {
     color: #212245;
     font-weight: 600;
@@ -118,4 +116,23 @@
       color: #777;
     }
   }
+}
+
+@media only screen and (max-width: 400px) {
+  .car-side {
+    border: 0.3px solid rgb(124, 124, 124);
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+}
+
+.car-side {
+  border: 0.3px solid rgb(124, 124, 124);
+  padding: 7px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }

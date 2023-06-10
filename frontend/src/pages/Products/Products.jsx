@@ -43,7 +43,7 @@ const Products = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="6" md="6" sm="6">
+            <Col lg="6" md="6" sm="12" xs="12">
               <div className="search_widget">
                 <input
                   type="text"
@@ -56,7 +56,7 @@ const Products = () => {
                 </span>
               </div>
             </Col>
-            <Col lg="6" md="6" sm="6" className="mb-5">
+            <Col lg="6" md="6" sm="12" xs="12" className="mb-5">
               <div className="sorting__widget">
                 <select className="w-50">
                   <option>Default</option>
@@ -68,7 +68,7 @@ const Products = () => {
               </div>
             </Col>
             {displayPage.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="6" key={item.id}>
+              <Col lg="4" md="6" sm="12" xs="12" key={item.id}>
                 <ProductCard item={item}></ProductCard>
               </Col>
             ))}

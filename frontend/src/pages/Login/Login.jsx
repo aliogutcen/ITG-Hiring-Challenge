@@ -11,17 +11,20 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  const [errorMsg, setErrorMsg] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    AuthService.login(login).then(
-      (response) => {
-        console.log(response);
+    AuthService.login(login)
+      .then((response) => {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("userId", response.data.id);
         window.location.replace("/");
-      },
-      () => {}
-    );
+      })
+      .catch((error) => {
+        if (error.response && error.response.data.code) {
+          setErrorMsg(error.response.data.message);
+        }
+      });
   };
 
   return (
@@ -58,6 +61,7 @@ const Login = () => {
                     }}
                   />
                 </div>
+                {errorMsg && <div className="form__error">{errorMsg}</div>}
                 <button>Login</button>
               </form>
               <Link to="/register">Create an Account</Link>

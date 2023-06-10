@@ -23,12 +23,14 @@ const ProductCard = (props) => {
         <img src={image01} alt="" className="w-100 product__card-img" />
       </div>
       <div className="product__content">
-        <h5>
-          <Link to={`/products/${id}`}>{productName}</Link>
+        <h5 className="product_card-name">
+          <Link to={`/products/${id}`}>
+            <h5 className="product_card-name">{productName}</h5>
+          </Link>
         </h5>
         <div className="product__price d-flex align-items-center justify-content-around">
-          <span>${price}</span>
-          <button className="add__to_cart" onClick={addToCart}>
+          <span className="price_product">${price}</span>
+          <button className="add__to_cart_product" onClick={addToCart}>
             Add To Cart
           </button>
         </div>

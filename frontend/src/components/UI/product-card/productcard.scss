@@ -33,7 +33,7 @@
   color: #ff0a34;
 }
 
-.add__to_cart {
+.add__to_cart_product {
   border: none;
   padding: 5px 20px;
   background: #ff0a34;
@@ -41,20 +41,6 @@
   border-radius: 5px;
   font-size: 0.9rem;
 }
-
-@media only screen and (max-width: 992px) {
-  .product__content h5 a {
-    font-size: 0.8rem;
-  }
-  .product__item {
-    padding: 20px;
-  }
-  .addTOCart__btn {
-    padding: 5px 15px;
-    font-size: 0.7rem;
-  }
-}
-
 .product__content span {
   font-weight: bold;
 }
@@ -92,4 +78,28 @@
 .tasty__treat-desc {
   color: #777;
   line-height: 28px;
+}
+
+@media only screen and (max-width: 992px) {
+  .product__content h5 a {
+    font-size: 0.8rem;
+  }
+  .product__item {
+    padding: 20px;
+  }
+  .addTOCart__btn {
+    padding: 5px 15px;
+    font-size: 0.7rem;
+  }
+
+  .product__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .product_card-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
 }
