@@ -1,70 +1,61 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Frontend
+In this project, I tried to design a shopping site that sells car parts. In the project, members can add products to the basket and then place orders and look at their past orders.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Screenshot_8](https://i.ibb.co/zHjM8CN/Screenshot-1.jpg)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+![Screenshot_8](https://i.ibb.co/dgCkxSd/Screenshot-3.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Screenshot_8](https://i.ibb.co/8bn5TdC/Screenshot-4.jpg)
 
-### `npm run build`
+![Screenshot_8](https://i.ibb.co/QDcCXKb/Screenshot-5.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Screenshot_8](https://i.ibb.co/3sPmwB6/Screenshot-6.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Screenshot_8](https://i.ibb.co/Gcrnb3Z/Screenshot-7.jpg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Screenshot_8](https://i.ibb.co/843PrLZ/Screenshot-9.jpg)
 
-### `npm run eject`
+![Screenshot_8](https://i.ibb.co/G3kTmJ9/Screenshot-10.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Screenshot_8](https://i.ibb.co/QNWfHMX/Screenshot-11.jpg)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Frontend Technologies Used 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+React 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+React Redux & Redux Toolkit
 
-## Learn More
+React Router DOM
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React Bootstrap & Reactstrap
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Sass
 
-### Code Splitting
+@emotion/react & @emotion/styled.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Remixicon
 
-### Analyzing the Bundle Size
+@mui/material
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Axios
 
-### Making a Progressive Web App
+React Hot Toast
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+React Paginate
 
-### Advanced Configuration
+React Credit Cards 2
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Sweetalert2
 
-### Deployment
+Web Vitals
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Testing and Development
 
-### `npm run build` fails to minify
+React Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Jest & @testing-library/react & @testing-library/user-event & @testing-library/jest-dom
