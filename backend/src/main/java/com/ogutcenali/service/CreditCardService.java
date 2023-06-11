@@ -57,7 +57,7 @@ public class CreditCardService {
     public List<CreditCardResponse> getAllCreditCardsForUser(Integer id) {
         List<CreditCard> creditCards = creditCardRepository.findByUserId(id);
         if (creditCards.isEmpty()) {
-            throw new EntityNotFoundException("No credit cards found for user with id: " + id);
+            return null;
         }
         return creditCards.stream()
                 .map(creditCard -> CreditCardResponse.builder()

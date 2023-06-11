@@ -59,6 +59,7 @@ public class AuthenticationService {
     private User createUser(RegisterRequest registerRequest) {
         User user = IAuthenticationMapper.INSTANCE.toUserRegister(registerRequest);
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        user.setRole(registerRequest.getRole());
         user.setEnabled(false);
         user.setIsAccountNonLocked(true);
         return user;

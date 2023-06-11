@@ -4,29 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="192c61e2-c25b-45e9-b7a7-352bed251377" name="Changes" comment="back">
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/utility/ImageUpload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/controller/OrderControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/controller/ProductControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/controller/UserControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/service/OrderItemServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/service/UserServiceTest.java" afterDir="false" />
+    <list default="true" id="192c61e2-c25b-45e9-b7a7-352bed251377" name="Changes" comment="finish">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/backend.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/backend.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/ShippingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/AuthenticationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/AuthenticationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/CreditCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/CreditCardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/ShippingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/controller/AuthenticationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/controller/AuthenticationControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/controller/CategoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/ogutcenali/controller/CategoryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Checkout/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Checkout/Checkout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.log" beforeDir="false" afterPath="$PROJECT_DIR$/project.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +46,22 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="backend" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="backend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="backend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="backend" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
             <select />
@@ -154,7 +159,7 @@
       <recent name="com.ogutcenali.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.backend [bootJar]">
+  <component name="RunManager" selected="Spring Boot.HiringChallangeApplication">
     <configuration name="backend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -254,11 +259,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.HiringChallangeApplication" />
         <item itemvalue="Gradle.backend [bootJar]" />
         <item itemvalue="Gradle.backend [clean]" />
         <item itemvalue="Gradle.backend [classes]" />
         <item itemvalue="Gradle.backend [build]" />
-        <item itemvalue="Spring Boot.HiringChallangeApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -286,6 +291,7 @@
       <workItem from="1686433285649" duration="492000" />
       <workItem from="1686433834421" duration="4048000" />
       <workItem from="1686475686078" duration="2058000" />
+      <workItem from="1686477761378" duration="1864000" />
     </task>
     <task id="LOCAL-00001" summary="logger added">
       <created>1685906352432</created>
@@ -343,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686433646179</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="finish">
+      <created>1686477997237</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686477997237</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +394,8 @@
     <MESSAGE value="axios api added" />
     <MESSAGE value="profile added,order page style" />
     <MESSAGE value="back" />
-    <option name="LAST_COMMIT_MESSAGE" value="back" />
+    <MESSAGE value="finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$CreditCardControllerTest.ic" NAME="CreditCardControllerTest Coverage Results" MODIFIED="1686477506417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -36,7 +36,7 @@ public class OrderService {
                 .phone(createOrderRequest.getPhone())
                 .build();
         orderRepository.save(order);
-        productService.changeStockWithOrder(createOrderRequest.getItems());
+//        productService.changeStockWithOrder(createOrderRequest.getItems());
         orderItemService.createOrderItems(order, createOrderRequest.getItems());
         return true;
     }
