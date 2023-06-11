@@ -4,38 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="192c61e2-c25b-45e9-b7a7-352bed251377" name="Changes" comment="profile added,order page style">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/CreateOrderRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/OrderTrackingStatusRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/response/OrdersResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/response/UserProfileResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/model/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/repository/OrderItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/backend.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/backend.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/config/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/config/security/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/CreditCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/CreditCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/AuthenticationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/AuthenticationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/CreateProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/CreateProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/response/AuthenticationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/response/AuthenticationResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/response/ProductResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/response/ProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/repository/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="192c61e2-c25b-45e9-b7a7-352bed251377" name="Changes" comment="finish">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/UI/product-card/productcard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/UI/product-card/productcard.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Checkout/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Checkout/Checkout.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\PC\Desktop\E-Ticaret-Hiring\htmlReport" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/backend">
@@ -55,6 +39,22 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="backend" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="backend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="backend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="backend" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -66,8 +66,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -147,99 +147,91 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.ogutcenali.controller" />
       <recent name="com.ogutcenali.service" />
+      <recent name="com.ogutcenali.controller" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.HiringChallangeApplication">
-    <configuration name="CategoryControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="backend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.ogutcenali.controller.CategoryControllerTest&quot;" />
+            <option value="bootJar" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CategoryServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="backend [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.ogutcenali.service.CategoryServiceTest&quot;" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CreditCardControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="backend [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.ogutcenali.controller.CreditCardControllerTest&quot;" />
+            <option value="classes" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CreditCardServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="backend [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.ogutcenali.service.CreditCardServiceTest&quot;" />
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -260,10 +252,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.HiringChallangeApplication" />
-        <item itemvalue="Gradle.CreditCardServiceTest" />
-        <item itemvalue="Gradle.CreditCardControllerTest" />
-        <item itemvalue="Gradle.CategoryServiceTest" />
-        <item itemvalue="Gradle.CategoryControllerTest" />
+        <item itemvalue="Gradle.backend [bootJar]" />
+        <item itemvalue="Gradle.backend [clean]" />
+        <item itemvalue="Gradle.backend [classes]" />
+        <item itemvalue="Gradle.backend [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +280,10 @@
       <workItem from="1686171216104" duration="230000" />
       <workItem from="1686339931744" duration="6173000" />
       <workItem from="1686388818010" duration="19591000" />
-      <workItem from="1686433285649" duration="300000" />
+      <workItem from="1686433285649" duration="492000" />
+      <workItem from="1686433834421" duration="4048000" />
+      <workItem from="1686475686078" duration="2058000" />
+      <workItem from="1686477761378" duration="2158000" />
     </task>
     <task id="LOCAL-00001" summary="logger added">
       <created>1685906352432</created>
@@ -339,7 +334,28 @@
       <option name="project" value="LOCAL" />
       <updated>1686433186780</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="back">
+      <created>1686433646179</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686433646179</updated>
+    </task>
+    <task id="LOCAL-00009" summary="finish">
+      <created>1686477997237</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686477997237</updated>
+    </task>
+    <task id="LOCAL-00010" summary="finish">
+      <created>1686479899784</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1686479899784</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,12 +392,24 @@
     <MESSAGE value="routes and pages added" />
     <MESSAGE value="axios api added" />
     <MESSAGE value="profile added,order page style" />
-    <option name="LAST_COMMIT_MESSAGE" value="profile added,order page style" />
+    <MESSAGE value="back" />
+    <MESSAGE value="finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$AuthenticationServiceTest.ic" NAME="AuthenticationServiceTest Coverage Results" MODIFIED="1685902339816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$VerificationUserServiceTest.ic" NAME="VerificationUserServiceTest Coverage Results" MODIFIED="1685902324490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$FailedAttemptServiceTest.ic" NAME="FailedAttemptServiceTest Coverage Results" MODIFIED="1685905073797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$AuthenticationControllerTest.ic" NAME="AuthenticationControllerTest Coverage Results" MODIFIED="1686051953046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$CreditCardControllerTest.ic" NAME="CreditCardControllerTest Coverage Results" MODIFIED="1686477506417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1686477483302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$AuthenticationServiceTest.ic" NAME="AuthenticationServiceTest Coverage Results" MODIFIED="1686477474572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$VerificationUserServiceTest.ic" NAME="VerificationUserServiceTest Coverage Results" MODIFIED="1686477428600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$AuthenticationControllerTest.ic" NAME="AuthenticationControllerTest Coverage Results" MODIFIED="1686477525719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$CreditCardServiceTest.ic" NAME="CreditCardServiceTest Coverage Results" MODIFIED="1686477469815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$CategoryControllerTest.ic" NAME="CategoryControllerTest Coverage Results" MODIFIED="1686477516191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$ProductControllerTest.ic" NAME="ProductControllerTest Coverage Results" MODIFIED="1686477492556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$OrderControllerTest.ic" NAME="OrderControllerTest Coverage Results" MODIFIED="1686477499367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$OrderItemServiceTest.ic" NAME="OrderItemServiceTest Coverage Results" MODIFIED="1686477443719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1686477436450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$AuthenticationControllerTest_registerTest.ic" NAME="AuthenticationControllerTest.registerTest Coverage Results" MODIFIED="1686435333373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$FailedAttemptServiceTest.ic" NAME="FailedAttemptServiceTest Coverage Results" MODIFIED="1686477462264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/E_Ticaret_Hiring$CategoryServiceTest.ic" NAME="CategoryServiceTest Coverage Results" MODIFIED="1686477390292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

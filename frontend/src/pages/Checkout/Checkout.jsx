@@ -49,7 +49,7 @@ const Checkout = () => {
 
     if (token) {
       OrderService.order(order, token).then((response) => {
-        console.log(response);
+        window.location.replace("/");
       });
     }
   };

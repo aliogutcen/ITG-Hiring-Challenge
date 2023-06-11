@@ -1,0 +1,231 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AuthenticationService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ogutcenali.service</a>
+</div>
+
+<h1>Coverage Summary for Class: AuthenticationService (com.ogutcenali.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AuthenticationService</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (9/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (35/50)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">AuthenticationService$$EnhancerBySpringCGLIB$$81d0edb5</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (9/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (35/50)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.ogutcenali.service;
+&nbsp;
+&nbsp;import com.ogutcenali.config.security.JwtService;
+&nbsp;import com.ogutcenali.dto.request.AuthenticationRequest;
+&nbsp;import com.ogutcenali.dto.request.RegisterRequest;
+&nbsp;import com.ogutcenali.dto.response.AuthenticationResponse;
+&nbsp;import com.ogutcenali.exception.AuthException;
+&nbsp;import com.ogutcenali.exception.EErrorType;
+&nbsp;import com.ogutcenali.mapper.IAuthenticationMapper;
+&nbsp;import com.ogutcenali.model.User;
+&nbsp;import com.ogutcenali.repository.UserRepository;
+&nbsp;import org.springframework.context.annotation.Lazy;
+&nbsp;import org.springframework.security.authentication.AuthenticationManager;
+&nbsp;import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+&nbsp;import org.springframework.security.core.AuthenticationException;
+&nbsp;import org.springframework.security.crypto.password.PasswordEncoder;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class AuthenticationService {
+&nbsp;
+&nbsp;    private final UserRepository userRepository;
+&nbsp;    private final PasswordEncoder passwordEncoder;
+&nbsp;    private final JwtService jwtService;
+&nbsp;    private final AuthenticationManager authenticationManager;
+&nbsp;    private final VerificationUserService verificationUserService;
+&nbsp;
+&nbsp;    private final FailedAttemptService failedAttemptService;
+&nbsp;
+&nbsp;    public AuthenticationService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService
+<b class="fc">&nbsp;            , AuthenticationManager authenticationManager, @Lazy VerificationUserService verificationUserService, FailedAttemptService failedAttemptService) {</b>
+<b class="fc">&nbsp;        this.userRepository = userRepository;</b>
+<b class="fc">&nbsp;        this.passwordEncoder = passwordEncoder;</b>
+<b class="fc">&nbsp;        this.jwtService = jwtService;</b>
+<b class="fc">&nbsp;        this.authenticationManager = authenticationManager;</b>
+<b class="fc">&nbsp;        this.verificationUserService = verificationUserService;</b>
+<b class="fc">&nbsp;        this.failedAttemptService = failedAttemptService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AuthenticationResponse register(RegisterRequest registerRequest) {
+<b class="fc">&nbsp;        checkUserExists(registerRequest.getEmail());</b>
+<b class="fc">&nbsp;        User user = createUser(registerRequest);</b>
+<b class="fc">&nbsp;        saveUserAndVerification(user);</b>
+<b class="nc">&nbsp;        String token = jwtService.generateToken(user);</b>
+<b class="nc">&nbsp;        return AuthenticationResponse.builder()</b>
+<b class="nc">&nbsp;                .token(token)</b>
+<b class="nc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void checkUserExists(String email) {
+<b class="fc">&nbsp;        Optional&lt;User&gt; userOptional = userRepository.findByEmail(email);</b>
+<b class="fc">&nbsp;        userOptional.ifPresent(user -&gt; {</b>
+<b class="nc">&nbsp;            throw new AuthException(EErrorType.AUTH_EMAIL_ERROR);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    private User createUser(RegisterRequest registerRequest) {
+<b class="fc">&nbsp;        User user = IAuthenticationMapper.INSTANCE.toUserRegister(registerRequest);</b>
+<b class="fc">&nbsp;        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));</b>
+<b class="fc">&nbsp;        user.setEnabled(false);</b>
+<b class="fc">&nbsp;        user.setIsAccountNonLocked(true);</b>
+<b class="fc">&nbsp;        return user;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void saveUserAndVerification(User user) {
+<b class="fc">&nbsp;        userRepository.save(user);</b>
+<b class="fc">&nbsp;        failedAttemptService.createFailedAttemptForUser(user.getId(), user.getEmail());</b>
+<b class="nc">&nbsp;        verificationUserService.save(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
+<b class="fc">&nbsp;        User user = findUserByEmail(authenticationRequest.getEmail());</b>
+<b class="fc">&nbsp;        authenticateUser(authenticationRequest.getEmail(), authenticationRequest.getPassword());</b>
+<b class="fc">&nbsp;        String token = jwtService.generateToken(user);</b>
+<b class="fc">&nbsp;        return AuthenticationResponse.builder()</b>
+<b class="fc">&nbsp;                .token(token)</b>
+<b class="fc">&nbsp;                .id(user.getId())</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private User findUserByEmail(String email) {
+<b class="fc">&nbsp;        Optional&lt;User&gt; userOptional = userRepository.findByEmail(email);</b>
+<b class="fc">&nbsp;        if (!userOptional.isPresent()) throw new AuthException(EErrorType.USER_NOT_FOUND);</b>
+<b class="fc">&nbsp;        User user = userOptional.get();</b>
+<b class="fc">&nbsp;        if (!user.isEnabled()) throw new AuthException(EErrorType.ACCOUNT_NOT_ACTIVE);</b>
+<b class="fc">&nbsp;        return user;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void authenticateUser(String email, String password) throws AuthException {
+&nbsp;        try {
+<b class="fc">&nbsp;            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));</b>
+<b class="nc">&nbsp;        } catch (AuthenticationException e) {</b>
+<b class="nc">&nbsp;            handleAuthenticationException(email);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void handleAuthenticationException(String email) throws AuthException {
+<b class="nc">&nbsp;        if (failedAttemptService.recordFailedAttempt(email)) {</b>
+<b class="nc">&nbsp;            throw new AuthException(EErrorType.AUTH_PASSWORD_ERROR);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        throw new AuthException(EErrorType.ACCOUNT_LOCKED);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void activeCustomer(User user) {
+<b class="fc">&nbsp;        user.setEnabled(true);</b>
+<b class="fc">&nbsp;        userRepository.save(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void customerLocked(String email) {
+<b class="nc">&nbsp;        User user = userRepository.findByEmail(email)</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new AuthException(EErrorType.USER_NOT_FOUND));</b>
+<b class="nc">&nbsp;        user.setIsAccountNonLocked(false);</b>
+<b class="nc">&nbsp;        userRepository.save(user);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-11 12:59</div>
+</div>
+</body>
+</html>

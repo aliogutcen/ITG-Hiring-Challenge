@@ -13,6 +13,7 @@ const Register = () => {
     password: "",
     firstname: "",
     lastname: "",
+    role: "USER",
   });
   const [errorMsg, setErrorMsg] = useState("");
 

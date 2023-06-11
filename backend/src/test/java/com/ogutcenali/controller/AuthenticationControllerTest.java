@@ -7,67 +7,66 @@ import com.ogutcenali.service.AuthenticationService;
 import com.ogutcenali.service.VerificationUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.http.ResponseEntity;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class AuthenticationControllerTest {
 
-    @Mock
-    private AuthenticationService authenticationService;
+    @InjectMocks
+    AuthenticationController authenticationController;
 
     @Mock
-    private VerificationUserService verificationUserService;
+    AuthenticationService authenticationService;
 
-    private MockMvc mockMvc;
+    @Mock
+    VerificationUserService verificationUserService;
 
     @BeforeEach
-    public void setup() {
-        MockitoAnnotations.openMocks(this);
-        AuthenticationController authenticationController = new AuthenticationController(authenticationService, verificationUserService);
-        mockMvc = MockMvcBuilders.standaloneSetup(authenticationController).build();
+    public void init() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void testRegister() throws Exception {
-        when(authenticationService.register(any(RegisterRequest.class)))
-                .thenReturn(new AuthenticationResponse("Bearer some_jwt_token"));
+    public void registerTest() {
+        RegisterRequest request = new RegisterRequest();
+        // ... initialize request as needed
 
-        mockMvc.perform(post("/api/v1/auth/register")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"test\",\"password\":\"testPassword\"}")) // Use an example request payload
-                .andExpect(status().isOk());
+        AuthenticationResponse mockResponse = new AuthenticationResponse();
+        // ... initialize mockResponse as needed
+        when(authenticationService.register(any(RegisterRequest.class))).thenReturn(mockResponse);
 
+        ResponseEntity<Void> response = authenticationController.register(request);
+
+        assertEquals(201, response.getStatusCodeValue());
         verify(authenticationService, times(1)).register(any(RegisterRequest.class));
     }
 
     @Test
-    public void testAuthenticate() throws Exception {
-        when(authenticationService.authenticate(any(AuthenticationRequest.class)))
-                .thenReturn(new AuthenticationResponse("Bearer some_jwt_token"));
+    public void authenticateTest() {
+        AuthenticationRequest request = new AuthenticationRequest();
+        // ... initialize request as needed
+        when(authenticationService.authenticate(any(AuthenticationRequest.class))).thenReturn(new AuthenticationResponse());
 
-        mockMvc.perform(post("/api/v1/auth/authenticate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"test\",\"password\":\"testPassword\"}")) // Use an example request payload
-                .andExpect(status().isOk());
+        ResponseEntity<AuthenticationResponse> response = authenticationController.authenticate(request);
 
+        assertEquals(200, response.getStatusCodeValue());
         verify(authenticationService, times(1)).authenticate(any(AuthenticationRequest.class));
     }
 
     @Test
-    public void testConfirmUserAccount() throws Exception {
+    public void confirmUserAccountTest() {
+        String token = "testToken";
+        when(verificationUserService.confirmEmail(anyString())).thenReturn("Confirmation successful");
 
+        ResponseEntity<?> response = authenticationController.confirmUserAccount(token);
 
-        mockMvc.perform(get("/api/v1/auth/confirm-account?token=some_token")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals("Confirmation successful", response.getBody());
         verify(verificationUserService, times(1)).confirmEmail(anyString());
     }
 }

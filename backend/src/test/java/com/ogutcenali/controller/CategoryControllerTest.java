@@ -56,13 +56,14 @@ public class CategoryControllerTest {
     @Test
     public void testDeleteCategory() throws Exception {
         Long categoryId = 1L;
-        doNothing().when(categoryService).deleteCategory(categoryId);
+        when(categoryService.deleteCategory(categoryId)).thenReturn(true);
 
-        mockMvc.perform(delete("/api/v1/categories/" + categoryId)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                mockMvc.perform(delete("/api/v1/categories/" + categoryId)
+                                .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isOk());
 
         verify(categoryService, times(1)).deleteCategory(categoryId);
     }
+
 
 }

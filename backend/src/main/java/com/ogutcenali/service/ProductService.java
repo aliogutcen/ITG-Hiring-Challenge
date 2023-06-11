@@ -1,22 +1,19 @@
 package com.ogutcenali.service;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
+
 import com.ogutcenali.dto.request.CreateProductRequest;
 import com.ogutcenali.dto.request.UpdateStockRequest;
 import com.ogutcenali.dto.response.ProductResponse;
 import com.ogutcenali.model.Category;
+import com.ogutcenali.model.OrderItem;
 import com.ogutcenali.model.Product;
 import com.ogutcenali.repository.ProductRepository;
+import com.ogutcenali.utility.ImageUpload;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -26,9 +23,11 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
 
-    public ProductService(ProductRepository productRepository, CategoryService categoryService) {
+    private final ImageUpload imageUpload;
+    public ProductService(ProductRepository productRepository, CategoryService categoryService, ImageUpload imageUpload) {
         this.productRepository = productRepository;
         this.categoryService = categoryService;
+        this.imageUpload = imageUpload;
     }
 
     //Added ımage cdn
@@ -41,9 +40,9 @@ public class ProductService {
                 .category(category.get())
                 .describe(createProductRequest.getDesc())
                 .stock(createProductRequest.getStock())
-                .image01(imageUpload(createProductRequest.getImage01()))
-                .image02(imageUpload(createProductRequest.getImage02()))
-                .image03(imageUpload(createProductRequest.getImage03()))
+                .image01(imageUpload.imageUpload(createProductRequest.getImage01()))
+                .image02(imageUpload.imageUpload(createProductRequest.getImage02()))
+                .image03(imageUpload.imageUpload(createProductRequest.getImage03()))
                 .price(createProductRequest.getPrice())
                 .build();
         productRepository.save(product);
@@ -118,22 +117,14 @@ public class ProductService {
 
     }
 
+    public void changeStockWithOrder(List<OrderItem> items) {
+        items.forEach(x -> {
+            Optional<Product> product = productRepository.findById(x.getId());
+            product.get().setStock(product.get().getStock() - x.getQuantity());
+            productRepository.save(product.get());
 
-    public String imageUpload(MultipartFile file) {
-        Map config = new HashMap();
-        config.put("cloud_name", "doa04qdhh");
-        config.put("api_key", "261194321947226");
-        config.put("api_secret", "K5_9m33MSDBvu4MZuHhHWeFxNeA");
-        Cloudinary cloudinary = new Cloudinary(config);
-        try {
-            Map<?, ?> result = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-            String url = (String) result.get("url");
-            System.out.println(url + " --------------------------");
-            return url;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+        });
+
+
     }
-
 }

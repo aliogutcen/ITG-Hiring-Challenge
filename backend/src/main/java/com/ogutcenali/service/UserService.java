@@ -29,12 +29,21 @@ public class UserService {
     public UserProfileResponse getUserProfile(Integer userId) {
         Optional<User> user = userRepository.findById(userId);
         List<CreditCardResponse> creditCard = creditCardService.getAllCreditCardsForUser(user.get().getId());
-        return UserProfileResponse.builder()
-                .creditCardNumber(creditCard)
-                .lastname(user.get().getLastname())
-                .firstname(user.get().getFirstname())
-                .email(user.get().getEmail())
-                .build();
+        if (creditCard!=null){
+            return UserProfileResponse.builder()
+                    .lastname(user.get().getLastname())
+                    .firstname(user.get().getFirstname())
+                    .email(user.get().getEmail())
+                    .build();
+        }else{
+            return UserProfileResponse.builder()
+                    .creditCardNumber(creditCard)
+                    .lastname(user.get().getLastname())
+                    .firstname(user.get().getFirstname())
+                    .email(user.get().getEmail())
+                    .build();
+        }
+
 
     }
 

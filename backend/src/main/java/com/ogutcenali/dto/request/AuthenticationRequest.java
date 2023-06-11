@@ -19,4 +19,6 @@ public class AuthenticationRequest {
 
     @Size(min = 5)
     private String password;
+
+
 }
