@@ -1,0 +1,144 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > EmailService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ogutcenali.utility</a>
+</div>
+
+<h1>Coverage Summary for Class: EmailService (com.ogutcenali.utility)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmailService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (3/12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.ogutcenali.utility;
+&nbsp;
+&nbsp;import com.ogutcenali.model.User;
+&nbsp;import com.ogutcenali.model.VerificationUser;
+&nbsp;import com.ogutcenali.service.VerificationUserService;
+&nbsp;import lombok.RequiredArgsConstructor;
+&nbsp;import org.springframework.context.annotation.Lazy;
+&nbsp;import org.springframework.mail.javamail.JavaMailSender;
+&nbsp;import org.springframework.mail.javamail.MimeMessageHelper;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import javax.mail.MessagingException;
+&nbsp;import javax.mail.internet.MimeMessage;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class EmailService {
+&nbsp;
+&nbsp;    private final VerificationUserService verificationUserService;
+&nbsp;    private JavaMailSender javaMailSender;
+&nbsp;
+<b class="fc">&nbsp;    public EmailService(@Lazy VerificationUserService verificationUserService, JavaMailSender javaMailSender) {</b>
+<b class="fc">&nbsp;        this.verificationUserService = verificationUserService;</b>
+<b class="fc">&nbsp;        this.javaMailSender = javaMailSender;</b>
+&nbsp;    }
+&nbsp;    public void sendMail(User user) throws MessagingException {
+<b class="nc">&nbsp;        VerificationUser verificationUser = verificationUserService.findByUser(user);</b>
+<b class="nc">&nbsp;        if (verificationUser != null) {</b>
+<b class="nc">&nbsp;            String token = verificationUser.getToken();</b>
+&nbsp;
+<b class="nc">&nbsp;            MimeMessage message = javaMailSender.createMimeMessage();</b>
+<b class="nc">&nbsp;            MimeMessageHelper helper = new MimeMessageHelper(message, true);</b>
+<b class="nc">&nbsp;            helper.setTo(user.getEmail());</b>
+<b class="nc">&nbsp;            helper.setSubject(&quot;Complete Registration!&quot;);</b>
+<b class="nc">&nbsp;            helper.setText(&quot;To confirm your account, please click here : &quot;</b>
+&nbsp;                    + &quot;http://localhost:8080/api/v1/auth/confirm-account?token=&quot; + token);
+<b class="nc">&nbsp;            javaMailSender.send(message);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-11 12:59</div>
+</div>
+</body>
+</html>

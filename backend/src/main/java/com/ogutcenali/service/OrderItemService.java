@@ -6,6 +6,7 @@ import com.ogutcenali.repository.OrderItemRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderItemService {
@@ -17,14 +18,13 @@ public class OrderItemService {
     }
 
     public void createOrderItems(Order order, List<OrderItem> orderItemList) {
-        orderItemList.forEach(x -> {
-            OrderItem orderItem = OrderItem.builder()
-                    .orderId(order.getId())
-                    .productId(x.getId())
-                    .quantity(x.getQuantity())
-                    .totalPrice(x.getTotalPrice())
-                    .build();
-            orderItemRepository.save(orderItem);
-        });
+        List<OrderItem> orderItems = orderItemList.stream().map(x -> OrderItem.builder()
+                .orderId(order.getId())
+                .productId(x.getId())
+                .quantity(x.getQuantity())
+                .totalPrice(x.getTotalPrice())
+                .build()).collect(Collectors.toList());
+
+        orderItemRepository.saveAll(orderItems);
     }
 }

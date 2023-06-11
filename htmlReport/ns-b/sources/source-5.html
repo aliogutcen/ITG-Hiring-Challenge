@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > OrderItemService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ogutcenali.service</a>
+</div>
+
+<h1>Coverage Summary for Class: OrderItemService (com.ogutcenali.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OrderItemService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.ogutcenali.service;
+&nbsp;
+&nbsp;import com.ogutcenali.model.Order;
+&nbsp;import com.ogutcenali.model.OrderItem;
+&nbsp;import com.ogutcenali.repository.OrderItemRepository;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class OrderItemService {
+&nbsp;
+&nbsp;    private final OrderItemRepository orderItemRepository;
+&nbsp;
+<b class="fc">&nbsp;    public OrderItemService(OrderItemRepository orderItemRepository) {</b>
+<b class="fc">&nbsp;        this.orderItemRepository = orderItemRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void createOrderItems(Order order, List&lt;OrderItem&gt; orderItemList) {
+<b class="fc">&nbsp;        List&lt;OrderItem&gt; orderItems = orderItemList.stream().map(x -&gt; OrderItem.builder()</b>
+<b class="fc">&nbsp;                .orderId(order.getId())</b>
+<b class="fc">&nbsp;                .productId(x.getId())</b>
+<b class="fc">&nbsp;                .quantity(x.getQuantity())</b>
+<b class="fc">&nbsp;                .totalPrice(x.getTotalPrice())</b>
+<b class="fc">&nbsp;                .build()).collect(Collectors.toList());</b>
+&nbsp;
+<b class="fc">&nbsp;        orderItemRepository.saveAll(orderItems);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-11 12:59</div>
+</div>
+</body>
+</html>

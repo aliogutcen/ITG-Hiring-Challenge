@@ -1,0 +1,186 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GlobalExceptionHandler</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ogutcenali.exception</a>
+</div>
+
+<h1>Coverage Summary for Class: GlobalExceptionHandler (com.ogutcenali.exception)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GlobalExceptionHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    22,2%
+  </span>
+  <span class="absValue">
+    (2/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    8,3%
+  </span>
+  <span class="absValue">
+    (2/24)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.ogutcenali.exception;
+&nbsp;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.http.converter.HttpMessageNotReadableException;
+&nbsp;import org.springframework.web.bind.MethodArgumentNotValidException;
+&nbsp;import org.springframework.web.bind.MissingPathVariableException;
+&nbsp;import org.springframework.web.bind.annotation.ControllerAdvice;
+&nbsp;import org.springframework.web.bind.annotation.ExceptionHandler;
+&nbsp;import org.springframework.web.bind.annotation.ResponseBody;
+&nbsp;import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static com.ogutcenali.exception.EErrorType.BAD_REQUEST_ERROR;
+&nbsp;import static com.ogutcenali.exception.EErrorType.INTERNAL_ERROR;
+&nbsp;
+&nbsp;
+&nbsp;@ControllerAdvice
+<b class="fc">&nbsp;public class GlobalExceptionHandler {</b>
+&nbsp;
+<b class="fc">&nbsp;    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);</b>
+&nbsp;
+&nbsp;    @ExceptionHandler(IllegalArgumentException.class)
+&nbsp;    @ResponseBody
+&nbsp;    public ResponseEntity&lt;ErrorMessage&gt; handleIllegalArgumentException(IllegalArgumentException exception) {
+<b class="nc">&nbsp;        EErrorType EErrorType = INTERNAL_ERROR;</b>
+<b class="nc">&nbsp;        return new ResponseEntity&lt;&gt;(createError(EErrorType, exception), HttpStatus.BAD_REQUEST);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(AuthException.class)
+&nbsp;    @ResponseBody
+&nbsp;    public ResponseEntity&lt;ErrorMessage&gt; handleSpringMonoException(AuthException exception) {
+<b class="nc">&nbsp;        return new ResponseEntity&lt;&gt;(createError(exception.getErrorType(), exception), exception.getErrorType().getHttpStatus());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(HttpMessageNotReadableException.class)
+&nbsp;    public final ResponseEntity&lt;ErrorMessage&gt; handleMessageNotReadableException(
+&nbsp;            HttpMessageNotReadableException exception) {
+<b class="nc">&nbsp;        EErrorType EErrorType = BAD_REQUEST_ERROR;</b>
+<b class="nc">&nbsp;        return new ResponseEntity&lt;&gt;(createError(EErrorType, exception), EErrorType.getHttpStatus());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+&nbsp;    public final ResponseEntity&lt;ErrorMessage&gt; handleMethodArgumentMisMatchException(
+&nbsp;            MethodArgumentTypeMismatchException exception) {
+<b class="nc">&nbsp;        EErrorType EErrorType = BAD_REQUEST_ERROR;</b>
+<b class="nc">&nbsp;        return new ResponseEntity&lt;&gt;(createError(EErrorType, exception), EErrorType.getHttpStatus());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(MissingPathVariableException.class)
+&nbsp;    public final ResponseEntity&lt;ErrorMessage&gt; handleMethodArgumentMisMatchException(
+&nbsp;            MissingPathVariableException exception) {
+<b class="nc">&nbsp;        EErrorType EErrorType = BAD_REQUEST_ERROR;</b>
+<b class="nc">&nbsp;        return new ResponseEntity&lt;&gt;(createError(EErrorType, exception), EErrorType.getHttpStatus());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(MethodArgumentNotValidException.class)
+&nbsp;    public final ResponseEntity&lt;ErrorMessage&gt; handleMethodArgumentNotValidException(
+&nbsp;            MethodArgumentNotValidException exception) {
+<b class="nc">&nbsp;        EErrorType EErrorType = BAD_REQUEST_ERROR;</b>
+<b class="nc">&nbsp;        List&lt;String&gt; fields = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        exception</b>
+<b class="nc">&nbsp;                .getBindingResult()</b>
+<b class="nc">&nbsp;                .getFieldErrors()</b>
+<b class="nc">&nbsp;                .forEach(e -&gt; fields.add(e.getField() + &quot;: &quot; + e.getDefaultMessage()));</b>
+<b class="nc">&nbsp;        ErrorMessage errorMessage = createError(EErrorType, exception);</b>
+<b class="nc">&nbsp;        errorMessage.setFields(fields);</b>
+<b class="nc">&nbsp;        return new ResponseEntity&lt;&gt;(errorMessage, EErrorType.getHttpStatus());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private ErrorMessage createError(EErrorType EErrorType, Exception exception) {
+<b class="nc">&nbsp;        return ErrorMessage.builder()</b>
+<b class="nc">&nbsp;                .code(EErrorType.getCode())</b>
+<b class="nc">&nbsp;                .message(EErrorType.getMessage())</b>
+<b class="nc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-11 12:59</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > VerificationUserService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ogutcenali.service</a>
+</div>
+
+<h1>Coverage Summary for Class: VerificationUserService (com.ogutcenali.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">VerificationUserService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,5%
+  </span>
+  <span class="absValue">
+    (14/16)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">VerificationUserService$$EnhancerBySpringCGLIB$$185f6eed</td>
+  </tr>
+  <tr>
+    <td class="name">VerificationUserService$$EnhancerBySpringCGLIB$$69e6a04b</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,5%
+  </span>
+  <span class="absValue">
+    (14/16)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.ogutcenali.service;
+&nbsp;
+&nbsp;import com.ogutcenali.model.User;
+&nbsp;import com.ogutcenali.model.VerificationUser;
+&nbsp;import com.ogutcenali.repository.VerificationRepository;
+&nbsp;import com.ogutcenali.utility.EmailService;
+&nbsp;import lombok.RequiredArgsConstructor;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.transaction.annotation.Transactional;
+&nbsp;import javax.mail.MessagingException;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;@RequiredArgsConstructor</b>
+&nbsp;public class VerificationUserService {
+&nbsp;
+&nbsp;    private final VerificationRepository verificationRepository;
+&nbsp;    private final EmailService emailService;
+&nbsp;    private final AuthenticationService authenticationService;
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public VerificationUser findByToken(String token) {
+<b class="fc">&nbsp;        return verificationRepository.findByToken(token);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public VerificationUser findByUser(User user) {
+<b class="fc">&nbsp;        return verificationRepository.findByUser(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public void save(User user) {
+<b class="fc">&nbsp;        String token = generateToken();</b>
+<b class="fc">&nbsp;        VerificationUser verificationUser = VerificationUser.builder().user(user).token(token).build();</b>
+<b class="fc">&nbsp;        verificationRepository.save(verificationUser);</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            emailService.sendMail(user);</b>
+<b class="nc">&nbsp;        } catch (MessagingException e) {</b>
+<b class="nc">&nbsp;            throw new RuntimeException(e);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private String generateToken() {
+<b class="fc">&nbsp;        return UUID.randomUUID().toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String confirmEmail(String confirmationToken) {
+<b class="fc">&nbsp;        VerificationUser verificationUser = findByToken(confirmationToken);</b>
+<b class="fc">&nbsp;        if (verificationUser != null) {</b>
+<b class="fc">&nbsp;            authenticationService.activeCustomer(verificationUser.getUser());</b>
+<b class="fc">&nbsp;            return &quot;Verify user&quot;;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return &quot;Error: Invalid confirmation token&quot;;</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-11 12:59</div>
+</div>
+</body>
+</html>

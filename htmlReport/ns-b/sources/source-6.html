@@ -1,0 +1,191 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > OrderService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ogutcenali.service</a>
+</div>
+
+<h1>Coverage Summary for Class: OrderService (com.ogutcenali.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OrderService</td>
+<td class="coverageStat">
+  <span class="percent">
+    12,5%
+  </span>
+  <span class="absValue">
+    (1/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    12,1%
+  </span>
+  <span class="absValue">
+    (4/33)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">OrderService$$EnhancerBySpringCGLIB$$6dc78a1b</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    12,5%
+  </span>
+  <span class="absValue">
+    (1/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    12,1%
+  </span>
+  <span class="absValue">
+    (4/33)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.ogutcenali.service;
+&nbsp;
+&nbsp;import com.ogutcenali.dto.request.CreateOrderRequest;
+&nbsp;import com.ogutcenali.dto.request.OrderTrackingStatusRequest;
+&nbsp;import com.ogutcenali.dto.response.OrdersResponse;
+&nbsp;import com.ogutcenali.model.Order;
+&nbsp;import com.ogutcenali.model.enums.ETrackingStatus;
+&nbsp;import com.ogutcenali.repository.OrderRepository;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.transaction.annotation.Transactional;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class OrderService {
+&nbsp;
+&nbsp;    private final OrderRepository orderRepository;
+&nbsp;    private final OrderItemService orderItemService;
+&nbsp;    private final ProductService productService;
+<b class="fc">&nbsp;    public OrderService(OrderRepository orderRepository, OrderItemService orderItemService, ProductService productService) {</b>
+<b class="fc">&nbsp;        this.orderRepository = orderRepository;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.orderItemService = orderItemService;</b>
+<b class="fc">&nbsp;        this.productService = productService;</b>
+&nbsp;    }
+&nbsp;    @Transactional
+&nbsp;    public Boolean createOrder(CreateOrderRequest createOrderRequest) {
+<b class="nc">&nbsp;        Order order = Order.builder()</b>
+<b class="nc">&nbsp;                .userId(createOrderRequest.getUserId())</b>
+<b class="nc">&nbsp;                .amount(createOrderRequest.getAmount())</b>
+<b class="nc">&nbsp;                .address(createOrderRequest.getAddress())</b>
+<b class="nc">&nbsp;                .eTrackingStatus(ETrackingStatus.CREATED)</b>
+<b class="nc">&nbsp;                .amount(createOrderRequest.getAmount())</b>
+<b class="nc">&nbsp;                .phone(createOrderRequest.getPhone())</b>
+<b class="nc">&nbsp;                .build();</b>
+<b class="nc">&nbsp;        orderRepository.save(order);</b>
+<b class="nc">&nbsp;        productService.changeStockWithOrder(createOrderRequest.getItems());</b>
+<b class="nc">&nbsp;        orderItemService.createOrderItems(order, createOrderRequest.getItems());</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public List&lt;OrdersResponse&gt; getOrdersForUser(Integer id) {
+<b class="nc">&nbsp;        return createOrderResponseList(orderRepository.findByUserId(id));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;OrdersResponse&gt; getAllOrders() {
+<b class="nc">&nbsp;        return createOrderResponseList(orderRepository.findAll());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private List&lt;OrdersResponse&gt; createOrderResponseList(List&lt;Order&gt; orders) {
+<b class="nc">&nbsp;        List&lt;OrdersResponse&gt; ordersResponses = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        orders.forEach(x -&gt; {</b>
+<b class="nc">&nbsp;            ordersResponses.add(createOrderResponse(x));</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return ordersResponses;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private OrdersResponse createOrderResponse(Order x) {
+<b class="nc">&nbsp;        return OrdersResponse.builder()</b>
+<b class="nc">&nbsp;                .address(x.getAddress())</b>
+<b class="nc">&nbsp;                .eTrackingStatus(x.getETrackingStatus())</b>
+<b class="nc">&nbsp;                .amount(x.getAmount())</b>
+<b class="nc">&nbsp;                .phone(x.getPhone())</b>
+<b class="nc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public OrdersResponse updateTrackingStatus(Long id, OrderTrackingStatusRequest orderTrackingStatusRequest) {
+<b class="nc">&nbsp;        Order order = orderRepository.findById(id)</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Order with id &quot; + id + &quot; not found&quot;));</b>
+<b class="nc">&nbsp;        order.setETrackingStatus(orderTrackingStatusRequest.getETrackingStatus());</b>
+<b class="nc">&nbsp;        orderRepository.save(order);</b>
+<b class="nc">&nbsp;        return createOrderResponse(order);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-11 12:59</div>
+</div>
+</body>
+</html>

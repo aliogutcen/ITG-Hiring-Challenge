@@ -11,18 +11,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
     private final OrderItemService orderItemService;
-
-    public OrderService(OrderRepository orderRepository, OrderItemService orderItemService) {
+    private final ProductService productService;
+    public OrderService(OrderRepository orderRepository, OrderItemService orderItemService, ProductService productService) {
         this.orderRepository = orderRepository;
 
         this.orderItemService = orderItemService;
+        this.productService = productService;
     }
     @Transactional
     public Boolean createOrder(CreateOrderRequest createOrderRequest) {
@@ -34,52 +35,44 @@ public class OrderService {
                 .amount(createOrderRequest.getAmount())
                 .phone(createOrderRequest.getPhone())
                 .build();
-
         orderRepository.save(order);
+        productService.changeStockWithOrder(createOrderRequest.getItems());
         orderItemService.createOrderItems(order, createOrderRequest.getItems());
         return true;
     }
 
 
     public List<OrdersResponse> getOrdersForUser(Integer id) {
-        List<OrdersResponse> ordersResponses = new ArrayList<>();
+        return createOrderResponseList(orderRepository.findByUserId(id));
+    }
 
-        orderRepository.findByUserId(id).forEach(x -> {
-            ordersResponses.add(OrdersResponse.builder()
-                    .address(x.getAddress())
-                    .eTrackingStatus(x.getETrackingStatus())
-                    .amount(x.getAmount())
-                    .phone(x.getPhone())
-                    .build());
+    public List<OrdersResponse> getAllOrders() {
+        return createOrderResponseList(orderRepository.findAll());
+    }
+
+    private List<OrdersResponse> createOrderResponseList(List<Order> orders) {
+        List<OrdersResponse> ordersResponses = new ArrayList<>();
+        orders.forEach(x -> {
+            ordersResponses.add(createOrderResponse(x));
         });
         return ordersResponses;
     }
 
-    public List<OrdersResponse> getAllOrders() {
-        List<OrdersResponse> ordersResponses = new ArrayList<>();
-
-        orderRepository.findAll().forEach(x -> {
-            ordersResponses.add(OrdersResponse.builder()
-                    .address(x.getAddress())
-                    .eTrackingStatus(x.getETrackingStatus())
-                    .amount(x.getAmount())
-                    .phone(x.getPhone())
-                    .build());
-        });
-        return ordersResponses;
+    private OrdersResponse createOrderResponse(Order x) {
+        return OrdersResponse.builder()
+                .address(x.getAddress())
+                .eTrackingStatus(x.getETrackingStatus())
+                .amount(x.getAmount())
+                .phone(x.getPhone())
+                .build();
     }
 
     @Transactional
     public OrdersResponse updateTrackingStatus(Long id, OrderTrackingStatusRequest orderTrackingStatusRequest) {
-        Optional<Order> order = orderRepository.findById(id);
-        order.get().setETrackingStatus(orderTrackingStatusRequest.getETrackingStatus());
-        orderRepository.save(order.get());
-        return OrdersResponse.builder()
-                .phone(order.get().getPhone())
-                .eTrackingStatus(order.get().getETrackingStatus())
-                .address(order.get().getAddress())
-                .amount(order.get().getAmount())
-                .build();
-
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Order with id " + id + " not found"));
+        order.setETrackingStatus(orderTrackingStatusRequest.getETrackingStatus());
+        orderRepository.save(order);
+        return createOrderResponse(order);
     }
 }
