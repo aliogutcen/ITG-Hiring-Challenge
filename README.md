@@ -7,7 +7,16 @@ In this project, I tried to design a shopping site that sells car parts. In the 
 
 ![Screenshot_8](https://i.ibb.co/zHjM8CN/Screenshot-1.jpg)
 
-![Screenshot_8](https://i.ibb.co/mC9vBz4/Screenshot-2.jpg)
+## Diagram
+
+![Screenshot_8](https://i.ibb.co/qChSh06/postgresql.png)
+
+## Api
+![Screenshot_8](https://i.ibb.co/QvJJGcw/swagger-api.jpg)
+
+## Test
+
+![Screenshot_8](https://i.ibb.co/Th1KtLQ/sag.jpg)
 # Getting Started
 These steps will help you to clone and run the project on your local machine. For more detailed instructions, please refer to the Installation section below.
 
@@ -54,41 +63,6 @@ SLF4J
 Logback
 
 Springdoc OpenAPI
-# Frontend Technologies Used 
-
-React 
-
-React Redux & Redux Toolkit
-
-React Router DOM
-
-React Bootstrap & Reactstrap
-
-Sass
-
-@emotion/react & @emotion/styled.
-
-Remixicon
-
-@mui/material
-
-Axios
-
-React Hot Toast
-
-React Paginate
-
-React Credit Cards 2
-
-Sweetalert2
-
-Web Vitals
-
-Testing and Development
-
-React Scripts
-
-Jest & @testing-library/react & @testing-library/user-event & @testing-library/jest-dom
 
 
 # Run Locally
