@@ -14,9 +14,6 @@ In this project, I tried to design a shopping site that sells car parts. In the 
 ## Api
 ![Screenshot_8](https://i.ibb.co/QvJJGcw/swagger-api.jpg)
 
-## Test
-
-![Screenshot_8](https://i.ibb.co/Th1KtLQ/sag.jpg)
 # Getting Started
 These steps will help you to clone and run the project on your local machine. For more detailed instructions, please refer to the Installation section below.
 
