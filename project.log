@@ -2588,3 +2588,6 @@ org.apache.tomcat.util.http.fileupload.impl.SizeLimitExceededException: the requ
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
 	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
 
+2023-06-11 13:38:40.186  INFO 20852 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-11 13:38:40.194  INFO 20852 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-11 13:38:40.198  INFO 20852 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

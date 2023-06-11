@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="192c61e2-c25b-45e9-b7a7-352bed251377" name="Changes" comment="finish">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/AuthenticationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/dto/request/AuthenticationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/CreditCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/CreditCardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ogutcenali/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/UI/product-card/productcard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/UI/product-card/productcard.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Checkout/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Checkout/Checkout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.log" beforeDir="false" afterPath="$PROJECT_DIR$/project.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +283,7 @@
       <workItem from="1686433285649" duration="492000" />
       <workItem from="1686433834421" duration="4048000" />
       <workItem from="1686475686078" duration="2058000" />
-      <workItem from="1686477761378" duration="1864000" />
+      <workItem from="1686477761378" duration="2158000" />
     </task>
     <task id="LOCAL-00001" summary="logger added">
       <created>1685906352432</created>
@@ -356,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686477997237</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="finish">
+      <created>1686479899784</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1686479899784</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
